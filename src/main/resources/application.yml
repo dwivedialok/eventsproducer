@@ -1,0 +1,12 @@
+server:
+  port : 8080
+
+kafka:
+  # Add comma separated  list of IP addresses and Kafka port e.g. a1.b1.c1.d1:9092,a2.b2.c2.d2:9092,a3.b3.c3.d3:9092
+  bootstrapServers:
+  topic: events
+  # user name and password for your Kafka cluster
+  # Its same what you added to your kafka.properties file when creating topic from console
+  username: ickafka
+  password:
+
