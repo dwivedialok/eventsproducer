@@ -9,7 +9,7 @@ import java.util.Date;
 public class SensorEvents {
     private String id;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss.SSS")
     private Date timestamp;
 
     private double reading;
