@@ -7,6 +7,6 @@ kafka:
   topic: events
   # user name and password for your Kafka cluster
   # Its same what you added to your kafka.properties file when creating topic from console
-  username: ickafka
+  username: 
   password:
 
