@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "c9b306f9-c8e7-4f35-ba0b-92fae17ba092",
+		"name": "DemoCassKafkaTraining",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "IngestEvents",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "815c2770-15e2-4044-8357-8eac2ea231f1",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\" : \"{{sensor_id}}\",\n\t\"timestamp\" : \"{{event_ts}}\",\n\t\"reading\" : {{reading}}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
