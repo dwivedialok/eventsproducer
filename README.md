@@ -13,7 +13,7 @@ Enter password when prompted. You will get password from ‘Connection Info’ s
 From within cqlsh run following commands to create keyspace and table and then insert/select records
 - Create Keyspace
 ```sql
-CREATE KEYSPACE training_ks WITH replication = {'class': 'NetworkTopologyStrategy', '<Your DC e.g. AWS_VPC_US_WEST_2>': '3'} 
+CREATE KEYSPACE training_ks WITH replication = {'class': 'NetworkTopologyStrategy', '<Your DC e.g. AWS_VPC_US_WEST_2>': '3'}; 
 ```
 - Create Table
 ```sql
@@ -50,7 +50,7 @@ Now open it in an editor e.g. nano using command below
 $ nano kafka.properties
 ```
 You will see text like one below, where you just need to change the password for your kafka cluster. You will get password from ‘Connection Info’ section of your Instaclustr managed Kafka cluster.
-Save kafka.properties file in `~/Downloads/kafka_client/bin/`
+Save kafka.properties file (with nano its *CTRL+X* to exit and *Y* to save on exit)
 ```text
 security.protocol=SASL_PLAINTEXT
 sasl.mechanism=SCRAM-SHA-256 sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required \
