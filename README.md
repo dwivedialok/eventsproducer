@@ -82,4 +82,4 @@ You can get the code repository locally by using following commands
  $ git clone https://github.com/dwivedialok/eventsconsumer.git
 ```
 
-Now you can import these projects into IntelliJ using pom.xml file and using “Import project” option of IntelliJ. However, we suggest creating project step by step as will be shown in the hands-on exercise session in the workshop. 
+Now you can import these projects into IntelliJ using `pom.xml` file and using **Import project** option of IntelliJ. However, we suggest creating project step by step as will be shown in the hands-on exercise session in the workshop. 
