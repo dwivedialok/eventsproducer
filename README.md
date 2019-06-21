@@ -1,4 +1,4 @@
-# Useful Commands
+# Lab Commands
 We recommend doing **all the hands-on work** including registering for Instaclustr account **from Ubuntu VM image** that was provided to you. If you still don’t have this image, then ask and we will provide the image ova file to you. Opening Instaclustr platform console website in VM makes it easy to copy connection credentials when connecting to C* or Kafka clusters.
 
 ## Using Instaclustr Managed C* cluster
