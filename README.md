@@ -57,18 +57,21 @@ sasl.mechanism=SCRAM-SHA-256 sasl.jaas.config=org.apache.kafka.common.security.s
     username="ickafka" \
     password="[USER PASSWORD]";
 ```
-
+- Export One Kafka Broker's Public IP
+```bash
+$ EXPORT KAFKA_BROKER_PUBLIC_IP=<Your Broker's Public IP>
+```
 - Connect to cluster and list topics
 ```bash
-$ ./ic-kafka-topics.sh --bootstrap-server <cluster public IP>:9092 --properties-file kafka.properties --list
+$ ./ic-kafka-topics.sh --bootstrap-server $KAFKA_BROKER_PUBLIC_IP:9092 --properties-file kafka.properties --list
 ```
 - Create new topic
 ```bash
-$ ./ic-kafka-topics.sh --bootstrap-server <cluster public IP>:9092 --properties-file kafka.properties --create --topic events --replication-factor 3 --partitions 3
+$ ./ic-kafka-topics.sh --bootstrap-server $KAFKA_BROKER_PUBLIC_IP:9092 --properties-file kafka.properties --create --topic events --replication-factor 3 --partitions 3
 ```
 - Start Console consumer
 ```bash
-$ ./kafka-console-consumer.sh --bootstrap-server <your_cluster_IP>:9092 --consumer.config kafka.properties --topic events
+$ ./kafka-console-consumer.sh --bootstrap-server $KAFKA_BROKER_PUBLIC_IP:9092 --consumer.config kafka.properties --topic events
 ```
 
 ## Developing Java based Producer and Consumers
