@@ -59,7 +59,7 @@ sasl.mechanism=SCRAM-SHA-256 sasl.jaas.config=org.apache.kafka.common.security.s
 ```
 - Export One Kafka Broker's Public IP
 ```bash
-$ EXPORT KAFKA_BROKER_PUBLIC_IP=<Your Broker's Public IP>
+$ export KAFKA_BROKER_PUBLIC_IP=<Your Broker's Public IP>
 ```
 - Connect to cluster and list topics
 ```bash
