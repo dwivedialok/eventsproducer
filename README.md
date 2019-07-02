@@ -73,6 +73,8 @@ $ ./ic-kafka-topics.sh --bootstrap-server $KAFKA_BROKER_PUBLIC_IP:9092 --propert
 ```bash
 $ ./kafka-console-consumer.sh --bootstrap-server $KAFKA_BROKER_PUBLIC_IP:9092 --consumer.config kafka.properties --topic events
 ```
+The above console consumer command will not show any messages yet. Once we complete Producer application in the next step, any messages produced to this topic will appear in this console window.
+
 
 ## Developing Java based Producer and Consumers
 
