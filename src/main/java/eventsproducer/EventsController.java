@@ -31,7 +31,8 @@ public class EventsController {
     @PostMapping(path = "/events", consumes = "application/json", produces = "application/json" )
     public ResponseEntity<String> produceEvents(@RequestBody SensorEvents event) throws JsonProcessingException {
         String eventValue = objectWriter.writeValueAsString(event);
-        kafkaTemplate.send(topicName, objectWriter.writeValueAsString(event)).addCallback(producerResultCallback);
+        kafkaTemplate.send(topicName, eventValue).addCallback(producerResultCallback);
+        // This returns success regardless of async result from kafkaTemplate.send
         return ResponseEntity.status(HttpStatus.CREATED).body(eventValue);
     }
 }
