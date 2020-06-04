@@ -7,14 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFutureCallback;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@EnableJms
 public class EventsController {
 
     @Value(value = "${kafka.topic}")
@@ -22,6 +26,9 @@ public class EventsController {
 
     @Autowired
     private KafkaTemplate<String,String> kafkaTemplate;
+
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
     @Autowired
     private ListenableFutureCallback<SendResult<String,String>> producerResultCallback;
@@ -34,5 +41,13 @@ public class EventsController {
         kafkaTemplate.send(topicName, eventValue).addCallback(producerResultCallback);
         // This returns success regardless of async result from kafkaTemplate.send
         return ResponseEntity.status(HttpStatus.CREATED).body(eventValue);
+    }
+
+    @PostMapping(path = "/mqmessage/{destinationName}", consumes = "application/json", produces = "application/json" )
+    public ResponseEntity<String> postMQMessage(@RequestBody String mqMessage,
+                                                @PathVariable("destinationName") String destinationName) throws JsonProcessingException {
+
+        jmsTemplate.convertAndSend(destinationName, mqMessage);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
