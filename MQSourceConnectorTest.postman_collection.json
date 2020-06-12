@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "b68c15d6-8f5d-452f-a9f8-8bf82814df07",
+		"name": "DemoCassKafkaTraining",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST ROCK Message",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51557b5a-d841-4764-95eb-4a52f8f39990",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"messageHeaders\": {\n    \"eventName\": \"orderToTransferCreated2\",\n    \"correlationID\": \"testCorrelationID2\",\n    \"causationID\": \"testCausationID2\"\n},\n\"messageKey\": {\n    \"messageKey\": \"R20384739\"\n},\n\"fields\": {  \n    \"orderNumber\": \"R20384738\",\n    \"vehicleOperator\": \"MSK\",\n    \"vesselCode\": \"214\",\n    \"vesselServiceCode\": \"405\",\n    \"vesselRouteCode\": \"E4\",\n    \"originSiteCode\": \"ITGOATM\",\n    \"originArrivalVoyageNumber\": \"004N\",\n    \"originDepartureVoyageNumber\": \"004N\",\n    \"originArrivalDateTime\": \"2020-02-29T10:00:00.000Z\",\n    \"originDepartureDateTime\": \"2020-03-01T06:00:00.000Z\",\n    \"originSiteOmit\": false,\n    \"destinationSiteCode\": \"EGPSDTM\",\n    \"destinationArrivalVoyageNumber\": \"005S\",\n    \"destinationDepartureVoyageNumber\": \"006N\",\n    \"destinationArrivalDateTime\": \"2020-03-04T20:00:00.000Z\",\n    \"destinationDepartureDateTime\": \"2020-03-06T01:00:00.000Z\",\n    \"destinationSiteOmit\": false,\n    \"orderStatusCode\": \"Suggested\",\n    \"transportModeCode\": \"FEO\",\n    \"isMatchedWithVesselSchedule\": true,\n    \"loadListStatusCode\": \"Waiting\",\n    \"comment\": \"available slots\",\n    \"OTTItemValue\": [{\n        \"orderItemStatusCode\": \"Suggested\",\n        \"equipmentSizeCode\": \"20\",\n        \"equipmentTypeCode\": \"DRY\",\n        \"numberOfEquipment\": \"30\"\n    },\n    {\n        \"orderItemStatusCode\": \"Suggested\",\n        \"equipmentSizeCode\": \"40\",\n        \"equipmentTypeCode\": \"HIGH\",\n        \"numberOfEquipment\": \"55\"\n    },\n    {\n        \"orderItemStatusCode\": \"Suggested\",\n        \"equipmentSizeCode\": \"40\",\n        \"equipmentTypeCode\": \"MGRF\",\n        \"numberOfEquipment\": \"4\"\n    },\n    {\n        \"orderItemStatusCode\": \"Suggested\",\n        \"equipmentSizeCode\": \"40\",\n        \"equipmentTypeCode\": \"FLAT\",\n        \"numberOfEquipment\": \"3\"\n    }],\n    \"valueMetadata\": {\n        \"createdDateTime\": \"2020-05-31T18:24:29.739Z\",\n        \"createdByUserID\": \"JIC013\",\n        \"approvedDateTime\": \"null\",\n        \"approvedByUserID\": \"null\",\n        \"updatedDateTime\": \"2020-02-11T18:24:29.739Z\",\n        \"updatedByUserID\": \"JIC013\"\n    }\n}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mqmessage/DEV.QUEUE.3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mqmessage",
+						"DEV.QUEUE.3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST GSIS Message",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b96a3024-3f9b-42f7-a2a4-2f2af73e8a51",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"messageHeaders\": {\n\t\t\"environment\": \"TEST\",\n\t\t\"sourceId\": \"APP*GSISFEED\",\n\t\t\"messageGeneratedTimestamp\": \"2020-05-22T10:04:06.586Z\",\n\t\t\"eventName\": \"VesselDatedScheduleDepartureDscUpdated\",\n\t\t\"messageId\": \"8a394b0c-832a-469c-a92a-1c8a6fcc6ff4\",\n\t\t\"correlationId\": \"bfa56af7-58f2-42d6-a527-a022ed39b503\",\n\t\t\"causationId\": \"fdd83232-2d6f-40f8-847a-6962b2004527\",\n\t\t\"messageExpirationDateTime\": \"2020-06-06T10:04:06.571Z\"\n\t},\n\t\"messageKey\": {\n\t\t\"messageKey\": \"909090908\"\n\t},\n\t\"fields\": {\n\t\t\"scheduleEntries\": {\n\t\t\t\"scheduleEntry\": [\n\t\t\t\t{\n\t\t\t\t\t\"rotationId\": 9879879,\n\t\t\t\t\t\"rotationName\": \"756 TP16\",\n\t\t\t\t\t\"rotationVersion\": 9,\n\t\t\t\t\t\"scheduleEntryID\": {\n\t\t\t\t\t\t\"scheduleEntryKey\": 11262661,\n\t\t\t\t\t\t\"scheduleEntryIdentifier\": {\n\t\t\t\t\t\t\t\"vessel\": {\n\t\t\t\t\t\t\t\t\"vesselCode\": \"703\",\n\t\t\t\t\t\t\t\t\"IMONumber\": \"9260469\",\n\t\t\t\t\t\t\t\t\"vesselName\": \"ALBERT MAERSK\",\n\t\t\t\t\t\t\t\t\"vesselOperatorCode\": \"MSK\",\n\t\t\t\t\t\t\t\t\"vesselFlag\": \"DK\",\n\t\t\t\t\t\t\t\t\"vesselCallSign\": \"OUOW2\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"arrivalVoyage\": {\n\t\t\t\t\t\t\t\t\"voyage\": \"014W\",\n\t\t\t\t\t\t\t\t\"direction\": \"W\",\n\t\t\t\t\t\t\t\t\"transportMode\": \"Ocean\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"departureVoyage\": {\n\t\t\t\t\t\t\t\t\"voyage\": \"020E\",\n\t\t\t\t\t\t\t\t\"direction\": \"E\",\n\t\t\t\t\t\t\t\t\"transportMode\": \"Ocean\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"service\": {\n\t\t\t\t\t\t\t\t\"code\": \"756\",\n\t\t\t\t\t\t\t\t\"name\": \"TP16\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"previousPortCall\": {\n\t\t\t\t\t\t\t\t\"cityCode\": \"KRBUS\",\n\t\t\t\t\t\t\t\t\"terminalCode\": \"KRBUSPI\",\n\t\t\t\t\t\t\t\t\"cityName\": \"Busan\",\n\t\t\t\t\t\t\t\t\"terminalName\": \"Pusan Newport International Term.\",\n\t\t\t\t\t\t\t\t\"geoCode\": \"WOJDYPMFUUPVT\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"currentPortCall\": {\n\t\t\t\t\t\t\t\t\"cityCode\": \"PAPTY\",\n\t\t\t\t\t\t\t\t\"terminalCode\": \"PAPTYTM\",\n\t\t\t\t\t\t\t\t\"cityName\": \"Panama Canal\",\n\t\t\t\t\t\t\t\t\"terminalName\": \"Panama Canal\",\n\t\t\t\t\t\t\t\t\"geoCode\": \"2HS9S2IYHNB9M\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"nextPortCall\": {\n\t\t\t\t\t\t\t\t\"cityCode\": \"PAPTY\",\n\t\t\t\t\t\t\t\t\"terminalCode\": \"PAPTYTM\",\n\t\t\t\t\t\t\t\t\"cityName\": \"Panama Canal\",\n\t\t\t\t\t\t\t\t\"terminalName\": \"Panama Canal\",\n\t\t\t\t\t\t\t\t\"geoCode\": \"2HS9S2IYHNB9M\"\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t},\n\t\t\t\t\t\"siteCallStatus\": \"SCHEDULED\",\n\t\t\t\t\t\"schedule\": {\n\t\t\t\t\t\t\"proformaArrival\": \"2020-06-10T22:00:00.000Z\",\n\t\t\t\t\t\t\"scheduledArrival\": \"2020-06-10T22:00:00.000Z\",\n\t\t\t\t\t\t\"proformaDeparture\": \"2020-06-10T22:01:00.000Z\",\n\t\t\t\t\t\t\"scheduledDeparture\": \"2020-06-10T22:01:00.000Z\"\n\t\t\t\t\t},\n\t\t\t\t\t\"dummyCall\": false,\n\t\t\t\t\t\"omitReason\": \"empty\",\n\t\t\t\t\t\"actual\": {\n\t\t\t\t\t\t\"actualArrival\": \"2020-06-10T22:00:00.000Z\",\n\t\t\t\t\t\t\"pilotOff\": \"2020-06-10T22:00:00.000Z\",\n\t\t\t\t\t\t\"actualDeparture\": \"2020-06-10T22:00:00.000Z\",\n\t\t\t\t\t\t\"arrivalAtPilotStation\": \"2020-06-10T22:00:00.000Z\",\n\t\t\t\t\t\t\"firstPilotOnBoard\": \"2020-06-10T22:00:00.000Z\"\n\t\t\t\t\t},\n\t\t\t\t\t\"notes\": \"No Notes\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mqmessage/DEV.QUEUE.1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mqmessage",
+						"DEV.QUEUE.1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Person Message",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e1d57ee-af3f-4967-9968-2cd54bebe7fd",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"messageHeaders\": {\n\t\t\"eventName\": \"VesselDatedScheduleDepartureDscUpdated\",\n\t\t\"messageId\": \"8a394b0c-832a-469c-a92a-1c8a6fcc6ff4\",\n\t\t\"correlationId\": \"bfa56af7-58f2-42d6-a527-a022ed39b503\",\n\t\t\"causationId\": \"fdd83232-2d6f-40f8-847a-6962b2004527\"\n\t},\n\t\"messageKey\": {\n\t\t\"messageKey\": \"11262662\"\n\t},\n\t\"fields\": {\"name\": \"Virat Kohli\", \"age\": 31, \"address\": \"Delhi,India\", \"gender\": \"MALE\", \"birth_date\": 6883}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/mqmessage/DEV.QUEUE.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mqmessage",
+						"DEV.QUEUE.2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
