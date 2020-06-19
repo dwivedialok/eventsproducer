@@ -19,3 +19,6 @@ ibm:
     user: admin
     password: passw0rd
 
+schema-registry:
+  cloud:
+    urls: http://schema-registry-cloud:8082

@@ -3,8 +3,8 @@ package eventsproducer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.ibm.jms.JMSBytesMessage;
-import com.ibm.msg.client.wmq.WMQConstants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -19,8 +19,6 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 import org.springframework.web.bind.annotation.*;
 
 
-import javax.jms.JMSException;
-import javax.jms.Session;
 import java.io.UnsupportedEncodingException;
 import java.util.Optional;
 
@@ -28,8 +26,13 @@ import java.util.Optional;
 @EnableJms
 public class EventsController {
 
+    Logger log = LoggerFactory.getLogger(EventsController.class);
+
     @Value(value = "${kafka.topic}")
     private String topicName;
+
+    @Value(value = "${schema-registry.cloud.urls}")
+    private String[] schemaRegistryCloudURLs;
 
     @Autowired
     private KafkaTemplate<String,String> kafkaTemplate;
@@ -66,6 +69,12 @@ public class EventsController {
         }
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping(path = "/v1/metadata/schemaRegistryUrls")
+    public ResponseEntity<String[]> getSchemaRegistryURL(){
+        log.info("Going to return Schema Registry URLS: {}", schemaRegistryCloudURLs);
+        return ResponseEntity.ok().body(schemaRegistryCloudURLs);
     }
 
     private void setMessageConverter(@RequestParam("encoding") Optional<String> encoding) {
